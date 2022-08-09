@@ -166,11 +166,8 @@ class MyLinkedList:
 myLinkedList =  MyLinkedList()
 
 myLinkedList.addAtHead(1)
-
 myLinkedList.addAtTail(3)
-
 myLinkedList.addAtIndex(1, 2)
-
 myLinkedList.addAtHead(7)
 
 val = myLinkedList.get(1)
