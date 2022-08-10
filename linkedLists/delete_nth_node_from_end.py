@@ -8,15 +8,25 @@ ONLY HEAD IS GIVEN, WE DONT HAVE THE LENGTH OF THE LINKED LIST
 Approach:
 
 1-2-3-4-5-6-7-8-9
-
-nth node from end- 4
+n = 3, i.e. we need to delete 7
 
 2 pointers, slow and fast at head
 We first move fast by n nodes.
-slow is at head and fast is at nth node
-slow and fast are n positions apart
-now we start moving slow and fast till fast reaches end.
-now slow is at the position where we need to delete the node after slow
+Slow is at head and fast is at nth node
+Slow and fast are n positions apart
+Now we start moving slow and fast till fast reaches end.
+Now slow is at the position where we need to delete the node after slow
+
+Steps
+slow at 1, fast at 1
+fast after 3 (as n=3) iterations will be at 4
+slow at 2, fast at 5
+slow at 3, fast at 6
+slow at 4, fast at 7
+slow at 5, fast at 8
+slow at 6, fast at 9
+
+fast has reached end, slow.next is to be deleted. 
 
 """
 
@@ -78,17 +88,6 @@ class MyLinkedList:
 		cur_node.next = new_node
 
 
-	def create_loop(self):
-		cur_node = self.head
-
-		head_node = self.head
-
-		while(cur_node.next != None):
-			cur_node = cur_node.next	
-
-		cur_node.next = head_node.next.next
-
-
 	def printLinkedList(self):
 
 		cur_node = self.head
@@ -107,11 +106,24 @@ class MyLinkedList:
 
 	def delete_nth_node_from_end(self,n):
 
+		#***********We are given only head and n************
+		slow = self.head
+		fast = slow
+
+		for i in range(n):
+			fast = fast.next
+
+		while(fast.next != None):
+			slow = slow.next
+			fast = fast.next
+
+		slow.next = slow.next.next
+
 
 
 
 # creating a linked list
-myLinkedList =  MyLinkedList()
+myLinkedList = MyLinkedList()
 myLinkedList.addAtHead(1)
 myLinkedList.addAtTail(2)
 myLinkedList.addAtTail(3)
@@ -123,4 +135,5 @@ myLinkedList.addAtTail(8)
 myLinkedList.addAtTail(9)
 
 myLinkedList.printLinkedList()
-
+myLinkedList.delete_nth_node_from_end(3)
+myLinkedList.printLinkedList()
