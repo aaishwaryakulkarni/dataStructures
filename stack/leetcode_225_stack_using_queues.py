@@ -35,4 +35,65 @@ myStack.push(2);
 myStack.top(); // return 2
 myStack.pop(); // return 2
 myStack.empty(); // return False
+
+
+Approach:
+We will use deque. It can be used as a stack or a queue.
+So we will use it as a queue but write logic to make it work as a stack.
+
+We will use normal append.
+We will use popleft as its a queue
+We will use queue[0] as top() as its a queue
+
+push(1):
+deque = 1
+
+push(2):
+deque = 1-2
+now popleft and add it to stack again
+deque = 2-1
+
+push(3):
+deque = 2-1-3
+now popleft 2 times and add it to stack again
+deque = 1-3-2 (1st time)
+deque = 3-2-1 (2nd time)
+
+
 """
+import collections
+class MyStack:
+
+	def __init__(self):
+		self.queue = collections.deque()
+
+	def pop(self):
+		if len(self.queue) !=0:
+			self.queue.popleft()
+		else:
+			print("No elements to pop!")
+
+	def top(self):
+		if len(self.queue) !=0:
+			return self.queue[0]
+		print("No element in stack!")
+
+	def push(self, val):
+		self.queue.append(val)
+
+		for i in range(len(self.queue) - 1):
+			self.queue.append(self.queue.popleft())
+
+	def empty(self):
+		return not len(self.queue)
+
+
+myStack = MyStack();
+myStack.push(1)
+myStack.push(2)
+myStack.push(3)
+myStack.push(4)
+print(myStack.top())
+myStack.pop()
+print(myStack.top())
+myStack.empty()
