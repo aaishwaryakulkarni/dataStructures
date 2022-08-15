@@ -1,5 +1,13 @@
 """
 Bubble Sort Algorithm
+
+Note:
+The second for loop ends at len(arr)-i-1
+This is because everything at index greater than it is already sorted.
+
+After 1st iteration, the largest element is at len(arr)-1
+After 2nd iteration, the 2nd largest element is at end-1 position len(arr)-2
+and so on.
 """
 
 def bubbleSort(arr):
