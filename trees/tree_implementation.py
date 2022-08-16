@@ -1,7 +1,7 @@
 """
-DFS Traversal
-"""
 
+
+"""
 class Trunk:
     def __init__(self, prev=None, str=None):
         self.prev = prev
@@ -45,35 +45,7 @@ class TreeNode:
 		self.left = None
 		self.right = None
 
-def inOrder(root):
 
-	"""
-	Inorder - Left, Root, Right
-	"""
-	if root:
-		inOrder(root.left)
-		print(root.data)
-		inOrder(root.right)
-
-def preOrder(root):
-
-	"""
-	Preorder: Root, Left, Right
-	"""
-	if root:
-		print(root.data)
-		inOrder(root.left)
-		inOrder(root.right)
-
-def postOrder(root):
-
-	"""
-	Postorder: Left, Right, Root
-	"""
-	if root:
-		inOrder(root.left)
-		inOrder(root.right)
-		print(root.data)
 
 # Tree creation
 node1 = TreeNode(3)
@@ -93,9 +65,3 @@ node3.right = node7
 
 
 printTree(node1, None, False)
-print("In-order traversal:")
-inOrder(node1)
-print("Pre-order traversal:")
-preOrder(node1)
-print("Post-order traversal:")
-postOrder(node1)
