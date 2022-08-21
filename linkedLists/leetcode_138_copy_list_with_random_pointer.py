@@ -27,3 +27,11 @@ def copyRandomList(head):
 		copyNode = Node(cur_node.val)
 		nodesDict[cur_node] = copyNode
 		cur_node = cur_node.next
+
+	cur_node = head
+	while cur_node:
+		copyNode = nodesDict[cur_node]
+		copyNode.next = nodesDict[cur_node.next]
+		copyNode.random = nodesDict[cur_node.random]
+
+	return cur_node[head]
