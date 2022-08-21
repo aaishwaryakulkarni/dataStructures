@@ -41,9 +41,6 @@ def maxNumber(nums1, nums2, k):
     def merge(a, b):
         return [max(a, b).pop(0) for _ in a+b]
 
-
-    print()
-
     return max(merge(prep(nums1, i), prep(nums2, k-i))
                for i in range(k+1)
                if i <= len(nums1) and k-i <= len(nums2))
