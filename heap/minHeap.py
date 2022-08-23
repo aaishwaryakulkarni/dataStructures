@@ -1,5 +1,5 @@
 """
-Max heap implementation
+Min heap implementation
 """
 
 import sys
