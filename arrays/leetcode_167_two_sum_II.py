@@ -39,7 +39,6 @@ If the sum is less than target we have to increase the left pointer by 1
 
 """
 
-
 def twoSum(nums, target):
 
 	left = 0

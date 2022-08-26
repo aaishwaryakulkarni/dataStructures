@@ -20,7 +20,6 @@ Input: nums = [-1,1,0,-3,3]
 Output: [0,0,9,0,0]
 """
 
-
 def productExceptSelf(nums):
 
 	result = [1] * len(nums)

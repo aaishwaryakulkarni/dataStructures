@@ -29,7 +29,6 @@ Explanation: The only possible triplet sums up to 0.
 
 """
 
-
 def threeSum(nums):
 
 	result = []
@@ -61,9 +60,6 @@ def threeSum(nums):
 					left = left + 1
 
 	return result
-
-
-
 
 nums = [-1,0,1,2,-1,-4]
 print(threeSum(nums))

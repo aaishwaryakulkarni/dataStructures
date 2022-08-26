@@ -41,8 +41,6 @@ def topKFrequent(nums, k):
 			if len(result) == k:
 				return result
 
-
-
 nums = [1,1,1,2,2,3]
 k = 2
 print(topKFrequent(nums, k))
