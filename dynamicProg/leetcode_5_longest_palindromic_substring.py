@@ -14,8 +14,6 @@ Output: "bb"
 
 """
 
-
-
 def longestPalindrome(s):
 
 	length = 0

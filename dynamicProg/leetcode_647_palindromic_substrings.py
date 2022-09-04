@@ -19,8 +19,6 @@ Output: 6
 Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa".
 """
 
-
-
 class Solution: 
 
 	def countSubtrings(self, s):
