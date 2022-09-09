@@ -114,16 +114,12 @@ def deleteNode(root, data):
             return temp
 
         temp = minValueNode(root.right)
-        print(temp.data)
+
 
         root.data = temp.data
         root.right = deleteNode(root.right, temp.data)
 
     return root
-
-
-
-
 
 root = TreeNode(27)
 root.insertNode(14)
@@ -133,7 +129,5 @@ root.insertNode(10)
 root.insertNode(19)
 
 printTree(root, None, False)
-
 deleteNode(root, 14)
-
 printTree(root, None, False)
