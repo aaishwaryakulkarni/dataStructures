@@ -68,8 +68,6 @@ class TreeNode:
 		else:
 			self.data = data
 
-
-
 def diameterOfBinaryTree(root):
 
     diameter = 0
