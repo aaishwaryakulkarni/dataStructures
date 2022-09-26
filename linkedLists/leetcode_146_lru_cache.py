@@ -101,6 +101,13 @@ class LRUCache:
 		self.dict_map[key] = Node(key, value)
 		self.insert(self.dict_map[key])
 
+		if len(self.dict_map) > self.capacity:
+			lru = self.left.next
+			self.remove(lru)
+			print("Removing")
+
+			del self.dict_map[lru.key]
+
 lRUCache = LRUCache(2)
 lRUCache.put(1, 1); 
 lRUCache.put(2, 2); 
