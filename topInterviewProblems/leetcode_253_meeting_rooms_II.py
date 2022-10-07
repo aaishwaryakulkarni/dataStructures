@@ -14,8 +14,6 @@ Input: intervals = [[7,10],[2,4]]
 Output: 1
 """
 
-
-
 def minMeetingRooms(intervals):
 
 	start = sorted([i[0] for i in intervals])
@@ -41,9 +39,6 @@ def minMeetingRooms(intervals):
 
 
 	return min_rooms
-
-
-
 
 intervals = [[15,20],[0,30],[5,10]]
 print(minMeetingRooms(intervals))
