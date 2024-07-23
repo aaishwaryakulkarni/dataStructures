@@ -67,7 +67,7 @@ class TreeNode:
 		else:
 			self.data = data
 
-def kthSmallest(root, k):
+def kthSmallestUsingStack(root, k):
 	
 	stack = []
 	cur_node = root
@@ -93,6 +93,27 @@ def kthSmallest(root, k):
 		cur_node = cur_node.right
 
 
+class Solution:
+	def kthSmallest(self, root, k):	
+		self.k = k
+		self.result = None
+		self.found = False
+
+		self.inOrder(root)
+		return self.result
+
+	def inOrder(self, root):
+		if not root or self.found:
+			return
+		
+		self.inOrder(root.left)
+		self.k -= 1
+		if self.k == 0:
+			self.result = root.value
+			self.found = True
+			return
+		self.inOrder(root.right)
+
 
 root = TreeNode(4)
 root.insertNode(2)
@@ -108,4 +129,4 @@ root.insertNode(14)
 printTree(root, None, False)
 
 k = 9
-print(kthSmallest(root, k))
+print(kthSmallestUsingStack(root, k))

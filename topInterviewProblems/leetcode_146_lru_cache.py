@@ -43,7 +43,7 @@ class Node:
 		self.key = key
 		self.value = value
 		self.prev = None
-		self.right = None
+		self.next = None
 
 class LRUCache:
 	
@@ -68,7 +68,7 @@ class LRUCache:
 		prev.next = nxt
 		nxt.prev = prev
 
-	def insert(self, node):
+	def insert(self, node): 
 
 		prev = self.right.prev
 		nxt = self.right

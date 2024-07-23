@@ -104,7 +104,7 @@ class MyLinkedList:
 			i = i + 1
 
 
-	def delete_nth_node_from_end(self,n):
+	def delete_nth_node_from_end(self,head, n):
 
 		#***********We are given only head and n************
 		slow = self.head
@@ -112,12 +112,16 @@ class MyLinkedList:
 
 		for i in range(n):
 			fast = fast.next
+		
+		if not fast:
+			return head
 
 		while(fast.next != None):
 			slow = slow.next
 			fast = fast.next
 
 		slow.next = slow.next.next
+		return head
 
 
 

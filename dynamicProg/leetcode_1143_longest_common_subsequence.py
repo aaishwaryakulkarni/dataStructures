@@ -29,26 +29,40 @@ Output: 0
 Explanation: There is no such common subsequence, so the result is 0.
 
 """
+class Solution(object):
+    def longestCommonSubsequence(self, text1, text2):
 
-def longestCommonSubsequence(text1, text2):
+        t1 = len(text1)
+        t2 = len(text2)
 
-    t1 = len(text1)
-    t2 = len(text2)
+        # Step 1: Create and fill the matrix (bottom-up)
+        matrix = [[0 for j in range(t2 + 1)] for i in range(t1 + 1)]
 
-    matrix = [[0 for j in range(len(text2) + 1)] for i in range(len(text1) + 1)]
+        for i in range(len(text1) - 1, -1, -1):
+            for j in range(len(text2) - 1, -1, -1):
 
-    for i in range(1, t1 + 1):
-        for j in range(1, t2 + 1):
+                if text1[i] == text2[j]:
+                    matrix[i][j] = 1 + matrix[i + 1][j + 1]
+                else:
+                    matrix[i][j] = max(matrix[i][j + 1],matrix[i + 1][j])
+        
 
-            if text1[i - 1] == text2[j - 1]:
-                matrix[i][j] = matrix[i - 1][j - 1] + 1
-
+        # Step 2: Trace back to get the LCS string (top-down)
+        i, j = 0, 0
+        lcs = []
+        while i < t1 and j < t2:
+            if text1[i] == text2[j]:
+                lcs.append(text1[i])
+                i += 1
+                j += 1
+            elif matrix[i][j + 1] > matrix[i + 1][j]:
+                j += 1
             else:
-                matrix[i][j] = max(matrix[i][j - 1], matrix[i - 1][j])
-
-    print(matrix)
-    return matrix[t1][t2]
-
+                i += 1
+        
+        return ''.join(lcs)
+    
 text1 = "abcde"
 text2 = "ace"
-print(longestCommonSubsequence(text1, text2))
+soln = Solution()
+print(soln.longestCommonSubsequence(text1, text2))

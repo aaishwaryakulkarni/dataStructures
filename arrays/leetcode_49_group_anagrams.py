@@ -26,18 +26,18 @@ import collections
 
 def groupAnagrams(input_list):
 
-    ans = collections.defaultdict(list)
+	ans = collections.defaultdict(list)
 
-    for i in input_list:
+	for i in input_list:
 
-    	count = [0] * 26
+		count = [0] * 26
 
-    	for char in i:
-    		count[ord(char) - ord("a")] += 1
+		for char in i:
+			count[ord(char) - ord("a")] += 1
 
-    	ans[tuple(count)].append(i)
+		ans[tuple(count)].append(i)
 
-    return list(ans.values())
+	return list(ans.values())
 
 input_list = ["eat", "tea", "tan", "ate", "nat", "bat"] 
 print(groupAnagrams(input_list))

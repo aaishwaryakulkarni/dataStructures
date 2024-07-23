@@ -31,12 +31,12 @@ kthLargest.add(4);   // return 8
 Approach:
 
 We first heapify the given array 4,5,8,2
-As we do this the minimun will be thr root
+As we do this the maximum will be the root
 We need the kth largest element
 If we have k elements in the min heap, the root node will 
 be the kth largest element
 
-So we pop till len of minheap is <= k
+So we pop till len of maxheap is <= k
 We can return the min in O(1).
 
 As we add a new element we again pop once so we have again the kth
@@ -48,24 +48,24 @@ import heapq
 
 class KthLargest:
 
-    def __init__(self, k, nums):
+	def __init__(self, k, nums):
 
-    	self.minHeap = nums
-    	self.k = k
+		self.maxHeap = nums
+		self.k = k
 
-    	heapq.heapify(self.minHeap)
+		heapq.heapify(self.maxHeap)
 
-    	while len(self.minHeap) > k:
-    		heapq.heappop(self.minHeap)
+		while len(self.maxHeap) > k:
+			heapq.heappop(self.maxHeap)
         
-    def add(self, val):
+	def add(self, val):
 
-    	heapq.heappush(self.minHeap, val)
+		heapq.heappush(self.maxHeap, val)
 
-    	while len(self.minHeap) > k:
-    		heapq.heappop(self.minHeap)
+		while len(self.maxHeap) > k:
+			heapq.heappop(self.maxHeap)
 
-    	return self.minHeap[0]
+		return self.maxHeap[0]
 
 
 k = 3

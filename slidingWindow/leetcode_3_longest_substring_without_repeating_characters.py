@@ -27,22 +27,19 @@ substring.
 def lengthOfLongestSubstring(s):
 
 	char_set = set()
-	pos = 0
-	result = 0
+	left = 0
+	res = 0
 
-	for i in range(len(s)):
+	for right in range(len(s)):
+		while s[right] in char_set:
+			char_set.remove(s[left])
 
-		while(s[i] in char_set):
-			char_set.remove(s[pos])
+			left += 1
+		char_set.add(s[right])
 
-			pos = pos + 1
-
-		char_set.add(s[i])
-
-		result = max(result, i - pos + 1)
-
-	return result
-
+		res = max(res, right - left + 1)
+	
+	return res
 
 
 s = "abcabcbb"

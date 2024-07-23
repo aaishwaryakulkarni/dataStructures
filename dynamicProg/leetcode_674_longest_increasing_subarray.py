@@ -25,7 +25,7 @@ Input: nums = [2,2,2,2,2]
 Output: 1
 Explanation: The longest continuous increasing subsequence is [2] with length 1.
 Note that it must be strictly
-increasing.
+increasing. 
 
 """
 
@@ -33,14 +33,15 @@ def findLengthOfLIS(nums):
 
 	LIS = [1 for i in range(len(nums))]
 
-	for i in range(len(nums)):
+	for i in range(1, len(nums)):
 
-		if nums[i] < nums[i - 1]:
+		if nums[i] > nums[i - 1]:
 			LIS[i] = LIS[i] + LIS[i - 1]
 
+	print(LIS)
 	return max(LIS)
 
 
 
-nums = [6,1,3,5,4,7]
+nums = [1,3,5,8,4,7]
 print(findLengthOfLIS(nums))

@@ -83,6 +83,7 @@ def rightSideView(root):
 
 			if node:
 				right_view_node = node
+				print(right_view_node.data)
 				q.append(node.left)
 				q.append(node.right)
 

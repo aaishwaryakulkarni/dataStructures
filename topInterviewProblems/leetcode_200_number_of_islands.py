@@ -30,50 +30,46 @@ Output: 3
 
 import collections
 
-def numIslands(grid):
+class Solution(object):
+	def numIslands(self, grid):
+		
+		if not grid:
+			return 0
+		
+		islands = 0
+		visited = set()
+		rows, cols = len(grid), len(grid[0])
+		directions = [[1, 0], [-1, 0], [0, 1], [0, -1]]
 
-	visited = set()
-	islands = 0
+		def bfs(r, c):
+			q = collections.deque()
 
-	rows = len(grid)
-	cols = len(grid[0])
+			visited.add((r, c))
+			q.append((r, c))
 
-	directions = [[-1,0], [1,0],[0,-1],[0,1]]
+			while q:
+				cur_r, cur_c = q.popleft()
 
-	def bfs(r, c):
+				for dr, dc in directions:
 
-		q = collections.deque()
-		visited.add((r, c))
-		q.append((r, c))
+					new_dr = cur_r + dr
+					new_dc = cur_c + dc
 
-		while q:
+					if (new_dr in range(rows) and new_dc in range(cols) and
+						grid[new_dr][new_dc] == "1" and (new_dr, new_dc) not in visited):
+						
+						visited.add((new_dr, new_dc))
+						q.append((new_dr, new_dc))
 
-			row, col = q.popleft()
+		for r in range(rows):
+			for c in range(cols):
+				if (grid[r][c] == "1" and 
+					(r, c) not in visited):
+					bfs(r, c)
+					islands += 1
+		
+		return islands
 
-			for dr in directions:
-
-				new_r, new_c = row + dr[0], col + dr[1]
-
-				if ((new_r in range(rows)) and 
-					(new_c in range(cols)) and
-					(grid[new_r][new_c] == '1') and
-					(new_r, new_c) not in visited):
-
-					q.append((new_r, new_c))
-					visited.add((new_r, new_c))
-
-
-	for r in range(rows):
-		for c in range(cols):
-
-			if((grid[r][c] == '1') and 
-				((r,c) not in visited)):
-
-				bfs(r, c)
-
-				islands = islands + 1
-
-	return islands
 
 grid = [
   ["1","1","0","0","0"],
@@ -82,4 +78,5 @@ grid = [
   ["0","0","0","1","1"]
 ]
 
-print(numIslands(grid))
+soln = Solution()
+print(soln.numIslands(grid))

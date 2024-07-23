@@ -48,24 +48,24 @@ import heapq
 
 class KthLargest:
 
-    def __init__(self, k, nums):
+	def __init__(self, k, nums):
 
-    	self.minHeap = nums
-    	self.k = k
+		self.minHeap = nums
+		self.k = k
 
-    	heapq.heapify(self.minHeap)
+		heapq.heapify(self.minHeap)
 
-    	while len(self.minHeap) > k:
-    		heapq.heappop(self.minHeap)
+		while len(self.minHeap) > k:
+			heapq.heappop(self.minHeap)
         
-    def add(self, val):
+	def add(self, val):
 
-    	heapq.heappush(self.minHeap, val)
+		heapq.heappush(self.minHeap, val)
 
-    	while len(self.minHeap) > k:
-    		heapq.heappop(self.minHeap)
+		while len(self.minHeap) > k:
+			heapq.heappop(self.minHeap)
 
-    	return self.minHeap[0]
+		return self.minHeap[0]
 
 
 k = 3
